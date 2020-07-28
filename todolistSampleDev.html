@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<script>
+function createTextBoxes()
+{
+  var element = document.createElement("input");
+  element.setAttribute("class","convertToLabel");
+//  element.setAttribute("onblur","convertToLabel");
+  var container =document.createElement("div");
+      
+  container.appendChild(element);
+  
+  var deleteButton= document.createElement("button");
+  deleteButton.setAttribute("class","delete");
+  deleteButton.innerText="X";
+  deleteButton.setAttribute("onclick","remove(this)");
+//  deleteButton.style.visibility="hidden";
+ // deleteButton.style.display="none";
+  container.appendChild(deleteButton);
+  
+  
+  
+  document.getElementById('container').appendChild(container);
+  element.focus();
+}
+
+function remove(e)
+{
+  //alert('yrs');
+ var container = document.getElementById('container');
+  container.removeChild(e.parentElement);
+}
+
+</script>
+<style>
+.convertToLabel:not(:focus)
+{
+  border:2px;
+}
+
+p :hover + .delete, .delete:hover 
+{
+  visibility:visible;
+  border:2px;
+}
+
+.delete {
+    visibility:hidden;
+}
+</style>
+</head>
+<body>
+  <p id='container'>
+  <button id="btnClick" onclick="createTextBoxes();">+</button>
+  </p>
+</body>
+</html>
+
